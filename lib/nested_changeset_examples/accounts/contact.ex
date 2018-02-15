@@ -17,7 +17,7 @@ defmodule NestedChangesetExamples.Accounts.Contact do
   end
 
   @doc false
-  def changeset(%Contact{} = contact, attrs) do
+  def changeset_with_cast_assoc(%Contact{} = contact, attrs) do
     contact
     |> cast(attrs, [:name, :description])
     |> validate_required([:name, :description])

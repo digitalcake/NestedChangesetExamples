@@ -49,9 +49,9 @@ defmodule NestedChangesetExamples.Accounts do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_contact(attrs \\ %{}) do
+  def create_contact_with_cast_assoc(attrs \\ %{}) do
     %Contact{}
-    |> Contact.changeset(attrs)
+    |> Contact.changeset_with_cast_assoc(attrs)
     |> Repo.insert()
   end
 

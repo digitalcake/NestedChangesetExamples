@@ -11,13 +11,13 @@ While the context of a `Contact` having many `Phone numbers` maybe best addresse
 
 For my first example I will show case a very basic common scenario for people just learning ecto, where I use `cast_assoc` in contacts changeset pipline to bind `phone_numbers`
 
-This is done via the contact's changeset pipeline and only requires that I pass the nested changeset for phone numbers as a list like so. 
+This is done via the contact's changeset pipeline and only requires that I pass the nested changeset for phone numbers as a list like so.
 
 
 ```
 iex(1)> alias NestedChangesetExamples.Accounts
 NestedChangesetExamples.Accounts
-iex(2)> Accounts.create_contact(%{name: "foo", description: "bar", phone_numbers: [ %{number: "555-5555"}] })
+iex(2)> Accounts.create_contact_with_cast_assoc(%{name: "foo", description: "bar", phone_numbers: [ %{number: "555-5555"}] })
 [debug] QUERY OK db=0.2ms
 begin []
 [debug] QUERY OK db=3.8ms
@@ -48,8 +48,8 @@ commit []
  }}
 ```
 
-It has been expressed by the community that this is not always the most favorible way to create assocated data. 
+It has been expressed by the community that this is not always the most favorible way to create assocated data.
 
-This repo is aimmed to explore the alternitives. 
+This repo is aimmed to explore the alternitives.
 
-Feel free to contribute your way of dealing with this simple task and submit a PR and I will add it to show case. 
+Feel free to contribute your way of dealing with this simple task and submit a PR and I will add it to show case.
