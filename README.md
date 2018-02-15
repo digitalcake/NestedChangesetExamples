@@ -1,6 +1,6 @@
 # NestedChangesetExamples
 
-This is meant to serve as an example of the meany ways to address nested data sets in ecto.
+This is meant to serve as an example of the many ways to address nested data sets in ecto.
 
 I would like to learn the alternative ways to build associated data.
 
