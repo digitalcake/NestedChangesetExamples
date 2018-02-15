@@ -9,7 +9,7 @@ For this I will use the example of a `Contact` having many `Phone numbers`
 While the context of a `Contact` having many `Phone numbers` maybe best addressed a different way
 (IE: embeds_many ) I think it has the simplest context to highlight the task at hand.
 
-For my first example I will show case a very basic common scenario for people just learning ecto, where I use `cast_assoc` in contacts to bind `phone_numbers`
+For my first example I will show case a very basic common scenario for people just learning ecto, where I use `cast_assoc` in contacts changeset pipline to bind `phone_numbers`
 
 This is done via the contact's changeset pipeline and only requires that I pass the nested changeset for phone numbers as a list like so. 
 
