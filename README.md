@@ -4,12 +4,14 @@ This is meant to serve as an example of the meany ways to address nested data se
 
 I would like to learn the alternative ways to build associated data.
 
+For this I will use the example of a `Contact` having many `Phone numbers`
+
 While the context of a `Contact` having many `Phone numbers` maybe best addressed a different way
 (IE: embeds_many ) I think it has the simplest context to highlight the task at hand.
 
 For my first example I will show case a very basic common scenario for people just learning ecto, where I use `cast_assoc` in contacts to bind `phone_numbers`
 
-This is done at the contact's changeset pipeline and only requires that I pass the nested changeset for phone numbers as a list like so.
+This is done via the contact's changeset pipeline and only requires that I pass the nested changeset for phone numbers as a list like so. 
 
 
 ```
@@ -45,3 +47,9 @@ commit []
    updated_at: ~N[2018-02-15 19:12:30.078413]
  }}
 ```
+
+It has been expressed by the community that this is not always the most favorible way to create assocated data. 
+
+This repo is aimmed to explore the alternitives. 
+
+Feel free to contribute your way of dealing with this simple task and submit a PR and I will add it to show case. 
