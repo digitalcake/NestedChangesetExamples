@@ -5,9 +5,9 @@ This is meant to serve as an example of the meany ways to address nested data se
 I would like to learn the alternative ways to build associated data.
 
 While the context of a `Contact` having many `Phone numbers` maybe best addressed a different way
-(IE: embeds_many ) I think it has the simplest context to hight the task at hand. That is what is the best way to address passing and saving nested changeset.
+(IE: embeds_many ) I think it has the simplest context to highlight the task at hand.
 
-For my first example I will show case a very common scenario where I use `cast_assoc` in contacts to bind `phone_numbers`
+For my first example I will show case a very basic common scenario for people just learning ecto, where I use `cast_assoc` in contacts to bind `phone_numbers`
 
 This is done at the contact's changeset pipeline and only requires that I pass the nested changeset for phone numbers as a list like so.
 
