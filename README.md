@@ -52,7 +52,7 @@ It has been expressed by the community that this is not always the most favorabl
 
 This repo is aimed to explore the alternatives.
 
-Heres the example of how you could do with via Ecto.Multi
+Heres the example of how you could do this via Ecto.Multi
 
 ```
 iex(31)> Accounts.create_contact_ecto_multi(%{name: "foo", description: "bar", phone_numbers: [ %{number: "555-5555"}] })
