@@ -12,7 +12,7 @@ defmodule NestedChangesetExamples.Accounts.Contact.PhoneNumber do
   @doc false
   def changeset(%PhoneNumber{} = phone_number, attrs) do
     phone_number
-    |> cast(attrs, [:number])
-    |> validate_required([:number])
+    |> cast(attrs, [:number, :contact_id])
+    |> validate_required([:number, :contact_id])
   end
 end
