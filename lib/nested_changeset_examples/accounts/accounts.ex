@@ -4,9 +4,13 @@ defmodule NestedChangesetExamples.Accounts do
   """
 
   import Ecto.Query, warn: false
+
+  alias Ecto.Multi
+
   alias NestedChangesetExamples.Repo
 
   alias NestedChangesetExamples.Accounts.Contact
+  alias NestedChangesetExamples.Accounts.Contact.PhoneNumber
 
   @doc """
   Returns the list of contacts.
@@ -49,10 +53,33 @@ defmodule NestedChangesetExamples.Accounts do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_contact_with_cast_assoc(attrs \\ %{}) do
+  def create_contact_with_cast_assoc(attrs) do
     %Contact{}
     |> Contact.changeset_with_cast_assoc(attrs)
     |> Repo.insert()
+  end
+
+  def create_contact_ecto_multi(attrs) do
+    contact_cs = Contact.changeset(%Contact{}, attrs)
+
+    Ecto.Multi.new()
+    |> Ecto.Multi.insert(:contact, contact_cs)
+    |> Ecto.Multi.merge(fn %{contact: contact} ->
+      phone_numbers = attrs[:phone_numbers] || []
+
+      phone_numbers
+      |> Enum.with_index()
+      |> Enum.reduce(Multi.new(), fn {params, index}, multi_accumulator ->
+        multi_accumulator
+        |> Multi.run({:phone_numer, index}, fn _ ->
+          phone_attrs = Map.merge(params, %{contact_id: contact.id})
+          phone_cs = PhoneNumber.changeset(%PhoneNumber{}, phone_attrs)
+
+          Repo.insert(phone_cs)
+        end)
+      end)
+    end)
+    |> Repo.transaction()
   end
 
   @doc """
